@@ -20,7 +20,7 @@ public class Limelight {
     // Uses network tables to check status of limelight
     private static NetworkTableEntry timingTestEntry = table.getEntry("TIMING_TEST_ENTRY");
     private static boolean timingTestEntryValue = false;
-    public static final long MAX_UPDATE_TIME = 200_000; // Micro Seconds = 0.2 Seconds
+    public static final long MAX_UPDATE_TIME = 250_000; // Micro Seconds = 0.25 Seconds
 
     /**
      * @return if limelight is connected
@@ -45,22 +45,19 @@ public class Limelight {
 
         return connected;
     }
-    
+
     /**
-     * @param targetHeightThreshold Height threshold for target
-     * @param minRatio              Min ratio for the blue aspect ratio
-     * @param maxRatio              Max ratio for the blue aspect ratio
-     * @param angleThreshold        maximum skew the target can have
-     * @return Whether or not the limelight has a target in view
+     * Decides if a target shows up on limelight screen
+     * @return If it has any target
      */
-    public static boolean hasValidTarget(
-            double targetHeightThreshold, 
-            double minRatio, double maxRatio,
-            double angleThreshold) {
-        return hasAnyTarget() 
-             & hasValidHeight(targetHeightThreshold) 
-             & hasValidBlueAspectRatio(minRatio, maxRatio)
-             & hasValidBlueOrientation(angleThreshold);
+    public static boolean hasAnyTarget() {
+        boolean validTarget = validTargetEntry.getDouble(0) > 0.5;
+
+        if (POST_TO_SMART_DASHBOARD) {
+            SmartDashboard.putBoolean("Valid Target", validTarget);
+        }
+
+        return validTarget;
     }
 
     // Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
