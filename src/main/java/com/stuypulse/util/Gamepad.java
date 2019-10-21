@@ -1,4 +1,4 @@
-package frc.util;
+package com.stuypulse.util;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
