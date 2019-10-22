@@ -18,7 +18,8 @@ repositories {
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
 // Also defines JUnit 4.
 dependencies {
-    implementation wpi.deps.vendor.java() //https://www.revrobotics.com/content/sw/max/sw-docs/java/index.html
+    implementation wpi.deps.vendor.java() //https://www.revrobotics.com/content/sw/max/sw-docs/java/index.html & https://www.kauailabs.com/public_files/navx-mxp/apidocs/java/com/kauailabs/navx/frc/package-summary.html
+    //implementation 'com.kauailabs.navx.frc:navx-java:3.1.366'
     implementation 'org.slf4j:slf4j-api:1.7.9' //http://www.slf4j.org/api/org/slf4j/Logger.html -- This is what Strykeforce uses for logs
     // implementation 'io.github.microutils:kotlin-logging:1.7.6' //https://github.com/MicroUtils/kotlin-logging -- This is what Strykeforce uses to log kotlin
     testCompile 'junit:junit:4.12'
